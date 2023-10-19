@@ -2,7 +2,12 @@ public class Personnage {
     private String personnageName;
     private String personnageType;
     private int niveauDeVie;
-    private String name;
+
+    private EquipementOffensif arme;
+//        private arme() {
+//            this.arme = "épée";
+//        }
+
     public Personnage() {
 
     }
@@ -15,19 +20,22 @@ public class Personnage {
 
     }
 //SETTERS et GETTERS
-    public void setName(String name) {
+    public String setName(String name) {
         this.personnageName = name;
+        return name;
     }
-
-    public String getPersonnageName() {
-        return personnageName;
+    public String getPersonnageName(String name) {
+        return personnageName = name;
     }
 
     public void setNiveauDeVie(int niveauDeVie) {
         this.niveauDeVie = niveauDeVie;
     }
 
-    public void setPersonnageType(String personnageType) {
-        this.personnageType = personnageType;
+    public String setPersonnageTypeMagicien() {
+    return personnageType = "magicien";
+    }
+    public String setPersonnageTypeGuerrier() {
+        return personnageType = "guerrier";
     }
 }

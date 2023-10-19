@@ -1,10 +1,15 @@
 public class EquipementOffensif {
-    String arme = "Arme";
-    String sort = "Sort";
+
+    String sort;
     int attackLevel;
     String name;
 
-    public static void main(String[] args) {
+//    public EquipementOffensif () {
+//        this.arme = "épée"
+//
+//    }
 
-    }
+
+
+
 }
