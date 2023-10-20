@@ -2,7 +2,8 @@ public class Personnage {
     private String personnageName;
     private String personnageType;
     private int niveauDeVie;
-    String choice;
+
+
 
 //    private EquipementOffensif arme;
 //        private arme() {
@@ -28,10 +29,11 @@ public class Personnage {
 
     //SETTERS et GETTERS
     public String getName(String name) {
-        this.personnageName = name;
-        return name;
+        return this.personnageName = name;
+
     }
 
+    //Erreur à corriger = setter et getter !!!
     public String setPersonnageName(String name) {
         return personnageName = name;
     }
@@ -55,6 +57,8 @@ public class Personnage {
         return "Votre personnage s'appelle " + getName(name) + " et votre type de personnage est " +
                 getPersonnageType(type);
     }
+
+
 
 
 }

@@ -31,4 +31,14 @@ public class Menu {
         }
 
     }
+
+    public void quitOrNot(String choix) {
+        if (choix.equals("recommencer")) {
+            personnageCreation();
+        }
+        else {
+            System.out.println("Vous avez choisi de quitter. Ciao !");
+        }
+    }
+
 }

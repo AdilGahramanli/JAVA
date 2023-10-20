@@ -9,9 +9,15 @@ public class Main {
     String answer;
 
 
+
     public static void main(String[] args) {
+    Game game = new Game();
+
+
+    //On crée un new menu, début du jeu
         System.out.println("Voulez vous démarrer une nouvelle partie ?");
         Menu menu = new Menu();
+
         Scanner scannerStart = new Scanner(System.in);
         String answer = scannerStart.nextLine();
         if (answer.equals("oui")) {
@@ -25,6 +31,13 @@ public class Main {
                 answer = scannerStart.nextLine();
                 if (answer.equals("oui")) {
                     menu.personnageCreation();
+                    System.out.println("Maintenant c'est parti pour le jeu !");
+                    while(game.PersonnageMove() <64 ) {
+                        game.PersonnageMove();
+
+                    }
+                    menu.quitOrNot(game.gameOrNot());
+                    
 
                 }
                 else {
@@ -34,41 +47,17 @@ public class Main {
 
                         System.out.println("Bye Gamer !");
                     }
+                    else {
+                        System.out.println("Alors c'est parti pour le jeu !");
+                        while(game.PersonnageMove() <64 ) {
+                            game.PersonnageMove();
+
+                        }
+                        menu.quitOrNot(game.gameOrNot());
+                    }
                     
                 }
-//
-////Début du jeu
-//            System.out.println("Bienvenue dans le jeu, veuillez choisir un nom pour votre avatar");
-//            menu.personnageScannerName = menu.scanner_Name.nextLine();
-//            System.out.println("votre personnage s'appellera " + menu.personnageScannerName);
-//
-//            System.out.println("Veuillez choisir un type. Tapez 'M' pour Magicien ou 'W' pour guerrier");
-//            menu.personnageScannerType = menu.scanner_Type.nextLine();
-//            Personnage personnage = new Personnage(menu.personnageScannerName, menu.personnageScannerType);
-//            System.out.println("Voulez-vous en savoir plus sur votre personnage ?");
-//            answer = scannerStart.nextLine();
-//
-//            if (answer.equals("oui")) {
-//                System.out.println("Super ! Votre personnage s'appelle " + menu.personnageScannerName + " et votre type de personnage est " +
-//                        personnage.getPersonnageType(menu.personnageScannerType) + " !");
-////MODIFIER infos
 
-//
-//                System.out.println("Vous voulez quitter ?");
-//                answer = scannerStart.nextLine();
-//                if (answer.equals("oui")) {
-//                    System.out.println("Bye !");
-//                }
-//            } else {
-//                System.out.println("Vous voulez quitter ?");
-//                answer = scannerStart.nextLine();
-//                if (answer.equals("oui")) {
-//                    System.out.println("Bye !");
-//                }
-//            }
-//        }
-
-//    }
             }
         }
 
