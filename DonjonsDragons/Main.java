@@ -25,10 +25,15 @@ public class Main {
                 answer = scannerStart.nextLine();
                 if (answer.equals("oui")) {
                     menu.personnageCreation();
+
                 }
                 else {
                     System.out.println("Vous voulez quitter ?");
                     answer = scannerStart.nextLine();
+                    if (answer.equals("oui")) {
+
+                        System.out.println("Bye Gamer !");
+                    }
                     
                 }
 //
