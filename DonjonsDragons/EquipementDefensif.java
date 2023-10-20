@@ -1,12 +1,18 @@
 public class EquipementDefensif {
-    protected String bouclier = "Bouclier";
-    protected String philtre = "Philtre";
+    private String bouclier = "Bouclier";
+    private int defenseLevel;
+    private String name;
 
-    public void setBouclier(String bouclier) {
-        this.bouclier = bouclier;
+    public String getBouclier(String bouclier) {
+        return bouclier;
     }
 
-    public void setPhiltre(String philtre) {
-        this.philtre = philtre;
+    public int getDefenseLevel() {
+        return defenseLevel;
     }
+    public String getName() {
+        return name;
+    }
+
+
 }
