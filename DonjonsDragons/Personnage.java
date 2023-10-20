@@ -2,6 +2,7 @@ public class Personnage {
     private String personnageName;
     private String personnageType;
     private int niveauDeVie;
+    private int force;
 
 
 

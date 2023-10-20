@@ -1,4 +1,4 @@
-public class EquipementDefensif {
+public abstract class EquipementDefensif {
     private String bouclier = "Bouclier";
     private int defenseLevel;
     private String name;

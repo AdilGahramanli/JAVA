@@ -37,7 +37,7 @@ public class Main {
 
                     }
                     menu.quitOrNot(game.gameOrNot());
-                    
+
 
                 }
                 else {

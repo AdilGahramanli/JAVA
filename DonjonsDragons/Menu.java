@@ -9,6 +9,7 @@ public class Menu {
     Scanner scanner_Type = new Scanner(System.in);
     Scanner scannerStart = new Scanner(System.in);
 
+    /** Création du personnage */
     public void personnageCreation() {
         System.out.println("Bienvenue dans le jeu, veuillez choisir un nom pour votre avatar");
         personnageScannerName = scanner_Name.nextLine();

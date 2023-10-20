@@ -1,4 +1,4 @@
-public class EquipementOffensif {
+public abstract class EquipementOffensif {
 
     private String sort;
     private int attackLevel;
