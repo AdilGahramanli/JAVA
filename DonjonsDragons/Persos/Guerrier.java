@@ -1,4 +1,4 @@
-package DonjonsDragons;
+package DonjonsDragons.Persos;
 
 
 public class Guerrier extends Personnage {
@@ -14,7 +14,7 @@ public class Guerrier extends Personnage {
 
         this.guerrierLifeLevel = 10000;
         this.guerrierForce = 2500;
-        this.personnageName="toto";
+
     }
 
     public int getGuerrierLifeLevel() {
@@ -28,7 +28,7 @@ public class Guerrier extends Personnage {
 
     @Override
     public String toString() {
-        return "Personage :" + getPersonnageName() + ", Niveau de vie : " + getGuerrierLifeLevel() +
+        return "Personnage :" + getPersonnageName() + ", Niveau de vie : " + getGuerrierLifeLevel() +
                 ", Force : " + getGuerrierForce();
     }
 }

@@ -1,6 +1,7 @@
 package DonjonsDragons;
+import java.util.ArrayList;
 
-import org.w3c.dom.ls.LSOutput;
+import DonjonsDragons.Persos.PersonnageHorsPlateauException;
 
 import java.lang.Math;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ public class Game {
     /**
      * contiendra la logique interne du jeu (joueurs, avancement)
      */
-    public int[] plateau = new int[63];
+    public ArrayList<Integer> plateau = new ArrayList<Integer>();
     private int die;
 
     private int dieResult;
@@ -30,9 +31,9 @@ public class Game {
 
         finally{
             personnagePosition = 64;
-            System.out.println("Vous avez terminé à la case " + getPersonnagePosition());
+            System.out.println("Vous avez terminé à la case " + getPersonnagePosition() + ", c'est gagné ! Appuyez sur 'o' !");
         }
-        
+
         while(scannerGame.nextLine().equals("o")) {
             System.out.println("Voulez-vous rejouer ?");
             this.restart();
@@ -68,7 +69,7 @@ public class Game {
     public int getPersonnagePosition() {
         return this.personnagePosition;
     }
-
+    /** Méthode pour rejouer*/
     public void restart() throws PersonnageHorsPlateauException {
         System.out.println("Voulez-vous rejouer une partie (o/n)?");
         String restartChoice = scannerGame.nextLine();

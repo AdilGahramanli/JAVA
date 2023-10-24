@@ -1,3 +1,5 @@
+package DonjonsDragons.Equipements;
+
 public abstract class EquipementDefensif extends Equipements {
     private String bouclier = "Bouclier";
     private int defenseLevel;

@@ -1,4 +1,4 @@
-package DonjonsDragons;
+package DonjonsDragons.Persos;
 
 public class Magicien extends Personnage {
 
@@ -22,7 +22,7 @@ public class Magicien extends Personnage {
     @Override
     public String toString() {
 
-        return "Personage :" + getPersonnageName() + ", Niveau de vie : " + getMagicienLifeLevel()
+        return "Personnage :" + getPersonnageName() + ", Niveau de vie : " + getMagicienLifeLevel()
                 + ", Force : " + getMagicienForce();
     }
 }

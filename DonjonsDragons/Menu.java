@@ -1,13 +1,15 @@
 package DonjonsDragons;
 
-import DonjonsDragons.Personnage;
+import DonjonsDragons.Persos.Guerrier;
+import DonjonsDragons.Persos.Magicien;
+import DonjonsDragons.Persos.Personnage;
 
 import java.util.Scanner;
 
 public class Menu {
 
-    String personnageScannerName;
-    String personnageScannerType;
+    private String personnageScannerName;
+    private String personnageScannerType;
     Scanner scanner_Name = new Scanner(System.in);
     Scanner scanner_Type = new Scanner(System.in);
     Scanner scannerStart = new Scanner(System.in);
@@ -44,7 +46,7 @@ public class Menu {
 
     /*Choisir un type de personnage et lancer l création du personnage*/
     public void personnageType() {
-        System.out.println("Veuillez choisir un type. Tapez 'M' pour Magicien ou 'G' pour Guerrier");
+        System.out.println("Veuillez choisir un type. Tapez 'm' pour Magicien ou 'g' pour Guerrier");
         personnageScannerType = scanner_Type.nextLine();
 
         if (personnageScannerType.equals("m")) {

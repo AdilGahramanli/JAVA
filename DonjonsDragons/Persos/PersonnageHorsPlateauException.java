@@ -1,4 +1,4 @@
-package DonjonsDragons;
+package DonjonsDragons.Persos;
 
 public class PersonnageHorsPlateauException extends Exception{
     public PersonnageHorsPlateauException() {
