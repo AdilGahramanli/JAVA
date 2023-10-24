@@ -1,4 +1,4 @@
-public abstract class EquipementOffensif {
+public abstract class EquipementOffensif extends Equipements {
 
     private String sort;
     private int attackLevel;

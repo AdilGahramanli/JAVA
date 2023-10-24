@@ -1,7 +1,10 @@
+package DonjonsDragons;
+
+import DonjonsDragons.Personnage;
+
 import java.util.Scanner;
 
 public class Menu {
-    boolean gameStart;
 
     String personnageScannerName;
     String personnageScannerType;
@@ -9,37 +12,57 @@ public class Menu {
     Scanner scanner_Type = new Scanner(System.in);
     Scanner scannerStart = new Scanner(System.in);
 
-    /** Création du personnage */
-    public void personnageCreation() {
+
+    /************************************************************************/
+    /**
+     * Le constructeur menu donne le choix de commencer ou pas une partie, et
+     * si la réponse est oui, lance les étapes de création de personnage
+     */
+
+    public Menu() {
+        System.out.println("Voulez-vous jouer une partie (o/n)?");
+        String startChoice = scannerStart.nextLine();
+
+        if (startChoice.equals("o")) {
+            personnageCreation();
+            personnageType();
+        } else {
+            System.out.println("Vous avez choisi de ne pas jouer.");
+        }
+    }
+/********************************************
+    /**
+     * Création du personnage
+     */
+    /*Nom du personnage*/
+    public String personnageCreation() {
         System.out.println("Bienvenue dans le jeu, veuillez choisir un nom pour votre avatar");
         personnageScannerName = scanner_Name.nextLine();
         System.out.println("votre personnage s'appellera " + personnageScannerName);
+        return personnageScannerName;
+    }
 
-        System.out.println("Veuillez choisir un type. Tapez 'M' pour Magicien ou 'W' pour guerrier");
+    /*Choisir un type de personnage et lancer l création du personnage*/
+    public void personnageType() {
+        System.out.println("Veuillez choisir un type. Tapez 'M' pour Magicien ou 'G' pour Guerrier");
         personnageScannerType = scanner_Type.nextLine();
 
+        if (personnageScannerType.equals("m")) {
 
-    }
+            Personnage magicien = new Magicien();
+            magicien.setPersonnageName(personnageScannerName);
+            System.out.println(magicien.toString());
 
-    public void personnageInforming(Personnage perso) {
-        System.out.println("Voulez-vous en savoir plus sur votre personnage ?");
+        } else if (personnageScannerType.equals("g")) {
 
-        String answer = scannerStart.nextLine();
+            Personnage guerrier = new Guerrier();
+            guerrier.setPersonnageName(personnageScannerName);
+            System.out.println(guerrier.toString());
 
-        if (answer.equals("oui")) {
-            System.out.println("Super ! Votre personnage s'appelle " + personnageScannerName + " et votre type de personnage est " +
-                    perso.getPersonnageType(personnageScannerType) +  " !");
-        }
-
-    }
-
-    public void quitOrNot(String choix) {
-        if (choix.equals("recommencer")) {
-            personnageCreation();
-        }
-        else {
-            System.out.println("Vous avez choisi de quitter. Ciao !");
+        } else {
+            personnageType();
         }
     }
+
 
 }

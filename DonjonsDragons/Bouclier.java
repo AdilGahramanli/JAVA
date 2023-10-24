@@ -1,3 +1,8 @@
-public class Bouclier extends EquipementDefensif {
+package DonjonsDragons;
 
+public class Bouclier {
+    public Bouclier() {
+        Personnage guerrier = new Guerrier();
+        guerrier.personnageName = "titi";
+    }
 }
