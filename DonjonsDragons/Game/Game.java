@@ -1,28 +1,39 @@
-package DonjonsDragons;
+package DonjonsDragons.Game;
 import java.util.ArrayList;
 
+import DonjonsDragons.Equipements.Arme;
+import DonjonsDragons.Equipements.Potion;
+import DonjonsDragons.Persos.Guerrier;
+import DonjonsDragons.Persos.Magicien;
 import DonjonsDragons.Persos.PersonnageHorsPlateauException;
-
 import java.lang.Math;
 import java.util.Scanner;
 
-public class Game {
+public class Game implements ICase{
     /**
      * contiendra la logique interne du jeu (joueurs, avancement)
      */
-    public ArrayList<Integer> plateau = new ArrayList<Integer>();
-    private int die;
 
+    private int die;
     private int dieResult;
     private int personnagePosition;
     Scanner scannerGame = new Scanner(System.in);
+    ArrayList<ICase> plateau = new ArrayList<ICase>() ;
+
+
 
     public Game() throws PersonnageHorsPlateauException {
+//        plateau.add(1,  new Guerrier());
+//        System.out.println(plateau.get(1));
+
+        plateau.set(1, new Guerrier());
+        plateau.set(2, new Guerrier());
+
         this.die = 6;
         this.personnagePosition = 0;
 
         try {
-            while(getPersonnagePosition()<64) {this.PersonnageMove();}}
+            while(getPersonnagePosition()<64) {this.personnageMove();}}
 
         catch (PersonnageHorsPlateauException e) {
             e.printStackTrace();
@@ -45,7 +56,7 @@ public class Game {
 
     }
 
-    public int PersonnageMove() throws PersonnageHorsPlateauException {
+    public int personnageMove() throws PersonnageHorsPlateauException {
             if (this.getPersonnagePosition() < 64) {
 
                 this.personnagePosition = this.personnagePosition + getDie();
@@ -75,10 +86,20 @@ public class Game {
         String restartChoice = scannerGame.nextLine();
         if (restartChoice.equals("o")) {
             personnagePosition = 0;
-            while(getPersonnagePosition()<64) {this.PersonnageMove();}
+            while(getPersonnagePosition()<64) {this.personnageMove();}
         } else {
             System.out.println("Vous avez choisi de ne plus jouer.");
         }
 
     }
+
+        public void plateauCreate () {
+//
+            plateau.add(1, (ICase) new Magicien());
+            plateau.add(2, (ICase) new Arme());
+            plateau.add(3, (ICase) new Potion());
+//
+        }
+
+
         }

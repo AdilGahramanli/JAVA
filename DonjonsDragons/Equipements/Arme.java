@@ -1,4 +1,6 @@
 package DonjonsDragons.Equipements;
 
-public class Arme extends EquipementOffensif{
+import DonjonsDragons.Game.ICase;
+
+public class Arme extends EquipementOffensif implements ICase {
 }

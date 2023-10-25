@@ -1,6 +1,8 @@
 package DonjonsDragons.Persos;
 
-public abstract class Personnage {
+import DonjonsDragons.Game.ICase;
+
+public abstract class Personnage implements ICase {
     private String personnageName;
     private int personnageForce;
     private int personnageLife;
@@ -26,10 +28,7 @@ public abstract class Personnage {
 
     public String getPersonnageArme() { return personnageArme; }
 
-    public String toString() {
-        return "Personnage : " + getPersonnageName() + ", Niveau de Vie : " + getPersonnageLife() +
-                ", Force : " + getPersonnageForce();
-    }
+    public abstract String toString();
 }
 
 

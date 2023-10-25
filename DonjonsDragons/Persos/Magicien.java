@@ -1,6 +1,8 @@
 package DonjonsDragons.Persos;
 
-public class Magicien extends Personnage {
+import DonjonsDragons.Game.ICase;
+
+public class Magicien extends Personnage implements ICase {
 
     private int magicienLifeLevel;
     private int magicienForce;
