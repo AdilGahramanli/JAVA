@@ -1,4 +1,4 @@
-package DonjonsDragons;
+package DonjonsDragons.Game;
 
 import DonjonsDragons.Persos.Guerrier;
 import DonjonsDragons.Persos.Magicien;
@@ -10,9 +10,7 @@ public class Menu {
 
     private String personnageScannerName;
     private String personnageScannerType;
-    Scanner scanner_Name = new Scanner(System.in);
-    Scanner scanner_Type = new Scanner(System.in);
-    Scanner scannerStart = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
 
     /************************************************************************/
@@ -23,7 +21,7 @@ public class Menu {
 
     public Menu() {
         System.out.println("Voulez-vous jouer une partie (o/n)?");
-        String startChoice = scannerStart.nextLine();
+        String startChoice = scanner.nextLine();
 
         if (startChoice.equals("o")) {
             personnageCreation();
@@ -31,6 +29,7 @@ public class Menu {
         } else {
             System.out.println("Vous avez choisi de ne pas jouer.");
         }
+
     }
 /********************************************
     /**
@@ -39,7 +38,7 @@ public class Menu {
     /*Nom du personnage*/
     public String personnageCreation() {
         System.out.println("Bienvenue dans le jeu, veuillez choisir un nom pour votre avatar");
-        personnageScannerName = scanner_Name.nextLine();
+        this.personnageScannerName = scanner.nextLine();
         System.out.println("votre personnage s'appellera " + personnageScannerName);
         return personnageScannerName;
     }
@@ -47,7 +46,7 @@ public class Menu {
     /*Choisir un type de personnage et lancer l création du personnage*/
     public void personnageType() {
         System.out.println("Veuillez choisir un type. Tapez 'm' pour Magicien ou 'g' pour Guerrier");
-        personnageScannerType = scanner_Type.nextLine();
+        personnageScannerType = scanner.nextLine();
 
         if (personnageScannerType.equals("m")) {
 
@@ -64,6 +63,10 @@ public class Menu {
         } else {
             personnageType();
         }
+    }
+
+    public String getPersonnageScannerName() {
+        return personnageScannerName;
     }
 
 

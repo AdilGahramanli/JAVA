@@ -1,6 +1,8 @@
 package DonjonsDragons.Equipements;
 
-public abstract class EquipementOffensif extends Equipements {
+import DonjonsDragons.Game.ICase;
+
+public abstract class EquipementOffensif extends Equipements implements ICase {
 
     private String sort;
     private int attackLevel;
@@ -23,6 +25,8 @@ public abstract class EquipementOffensif extends Equipements {
         return name;
     }
 
-
-
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

@@ -28,6 +28,8 @@ public abstract class Personnage implements ICase {
 
     public String getPersonnageArme() { return personnageArme; }
 
+
+
     public abstract String toString();
 }
 

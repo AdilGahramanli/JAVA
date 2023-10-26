@@ -1,7 +1,21 @@
 package DonjonsDragons.Equipements;
 
-public class Bouclier {
-    public Bouclier() {
+import DonjonsDragons.Game.ICase;
 
+public class Bouclier extends EquipementDefensif implements ICase {
+    private int force;
+    public Bouclier() {
+        this.force = 10;
+        toString();
+
+    }
+
+    @Override
+    public String toString() {
+        return "Force Bouclier :" +getForceBouclier();
+    }
+
+    public int getForceBouclier() {
+        return force;
     }
 }
