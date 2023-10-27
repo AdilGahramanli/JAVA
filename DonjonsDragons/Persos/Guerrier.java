@@ -10,8 +10,8 @@ public class Guerrier extends Personnage {
     private int guerrierLifeLevel;
     private int guerrierForce;
 
-    public Guerrier() {
-
+    public Guerrier(String name) {
+        setPersonnageName(name);
         this.guerrierLifeLevel = 10000;
         this.guerrierForce = 2500;
 

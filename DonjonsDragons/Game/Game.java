@@ -7,7 +7,7 @@ import DonjonsDragons.Persos.*;
 import java.lang.Math;
 import java.util.Scanner;
 /* ********************************************************************* */
-public class Game implements ICase, emptyCase {
+            public class Game extends Menu implements ICase, emptyCase {
     /**
      * contiendra la logique interne du jeu (joueurs, avancement)
      */
@@ -21,8 +21,16 @@ public class Game implements ICase, emptyCase {
     /* ******************* */
     public Game() throws PersonnageHorsPlateauException {
         plateauCreate(plateau);
+        personnageTypo(plateau);
         System.out.println(plateau);
-        plateau.add(0, );
+        for(int i=0; i< plateau.size(); i++) {
+            System.out.println(plateau.get(i));
+        }
+
+//        System.out.println(plateau.get(0).getClass());
+
+        //Le jeu fonction jouer
+
 
         this.die = 6;
         this.personnagePosition = 0;
@@ -71,6 +79,19 @@ public class Game implements ICase, emptyCase {
         return personnagePosition;
     }
 
+    public void personnageTypo (ArrayList plateau) {
+        System.out.println("Vous devez choisir entre magicien ('m') ou guerrier ('g')");
+        String joueurChoice = scannerGame.nextLine();
+        if (joueurChoice.equals("m")) {
+            plateau.set(0, "/Case 0" + (ICase) new Magicien(getPersonnageScannerName()) + " /");
+        } else if (joueurChoice.equals("g")) {
+            plateau.set(0, (ICase) new Guerrier(getPersonnageScannerName()) + " /");
+        } else {
+            System.out.println("vous savez pas taper au clavier, recommencez (c'est avec des minuscules pour info)");
+            personnageTypo(plateau);
+        }
+    }
+
 
     public int getPersonnagePosition() {
         return this.personnagePosition;
@@ -96,19 +117,63 @@ public class Game implements ICase, emptyCase {
     public void plateauCreate(ArrayList plateau) {
 
         for (int i = 0; i < 64; i++) {
-            plateau.add(i, " Case " + (i + 1) + " " + (emptyCase) + " /");
+            plateau.add(i, "/Case " + (i + 1) + " " + (emptyCase) + " /");
 //            plateau.set(i, "/ case " + i + "/");
         }
 
-        plateau.set(0, (ICase) new Guerrier() + " /");
-        plateau.set(4, "/Case 5 " + (ICase) new PotionStandard()+ " /" );
-        plateau.set(6, "/Case 7 " + (ICase) new Épée()+ " /");
+        plateau.set(0, "/Case 1 " + (ICase) new Eclair()+ " /" );
+        plateau.set(1, "/Case 2 " + (ICase) new Massue()+ " /" );
+        plateau.set(2, "/Case 3 " + (ICase) new Goblin()+ " /" );
+        plateau.set(3, "/Case 4 " + (ICase) new Eclair()+ " /" );
+        plateau.set(4, "/Case 5 " + (ICase) new Massue()+ " /" );
+        plateau.set(5, "/Case 6 " + (ICase) new Goblin()+ " /" );
+        plateau.set(6, "/Case 7 " + (ICase) new PotionStandard()+ " /" );
+        plateau.set(7, "/Case 8 " + (ICase) new Eclair() + " /");
         plateau.set(8, "/Case 9 " + (ICase) new Goblin()+ " /");
-        plateau.set(14, "/Case 15 " + (ICase) new Bouclier()+ " /");
-        plateau.set(20, "/Case 21 " + (ICase) new Sorcier()+ " /");
-        plateau.set(30, "/Case 31 " + (ICase) new Goblin()+ " /");
-        plateau.set(34, "case 35 " + (ICase) new Bouclier()+ " /");
-        plateau.set(60, "/Case 61 " + (ICase) new Dragon()+ " /");
+        plateau.set(9, "/Case 10 " + (ICase) new Sorcier()+ " /");
+        plateau.set(10, "/Case 11 " + (ICase) new Massue()+ " /");
+
+        plateau.set(11, "/Case 12 " + (ICase) new Goblin()+ " /");
+        plateau.set(12, "/Case 13 " + (ICase) new PotionStandard()+ " /" );
+        plateau.set(14, "/Case 15 " + (ICase) new Goblin()+ " /");
+        plateau.set(16, "/Case 17 " + (ICase) new Eclair() + " /");
+        plateau.set(17, "/Case 18 " + (ICase) new Goblin()+ " /");
+        plateau.set(18, "/Case 19 " + (ICase) new Epee() + " /");
+        plateau.set(19, "/Case 20 " + (ICase) new Sorcier()+ " /");
+        plateau.set(20, "/Case 21 " + (ICase) new Goblin()+ " /");
+
+        plateau.set(21, "/Case 22 " + (ICase) new Massue()+ " /");
+        plateau.set(22, "/Case 23 " + (ICase) new Eclair() + " /");
+        plateau.set(23, "/Case 24 " + (ICase) new Goblin()+ " /");
+        plateau.set(24, "/Case 25 " + (ICase) new Sorcier()+ " /");
+        plateau.set(26, "/Case 27 " + (ICase) new Goblin()+ " /");
+        plateau.set(27, "/Case 28 " + (ICase) new GrandePotion() + " /");
+        plateau.set(29, "/Case 30 " + (ICase) new Goblin()+ " /");
+
+        plateau.set(30, "/Case 31 " + (ICase) new PotionStandard()+ " /" );
+        plateau.set(31, "/Case 32 " + (ICase) new Sorcier()+ " /");
+        plateau.set(32, "/Case 33 " + (ICase) new PotionStandard()+ " /" );
+        plateau.set(34, "/Case 35 " + (ICase) new Sorcier()+ " /");
+        plateau.set(35, "/Case 36 " + (ICase) new Sorcier()+ " /");
+        plateau.set(36, "/Case 37 " + (ICase) new Sorcier()+ " /");
+        plateau.set(37, "/Case 38 " + (ICase) new Sorcier()+ " /");
+        plateau.set(38, "/Case 39 " + (ICase) new PotionStandard()+ " /" );
+        plateau.set(39, "/Case 40 " + (ICase) new Sorcier()+ " /");
+
+        plateau.set(40, "/Case 41 " + (ICase) new GrandePotion() + " /");
+        plateau.set(41, "/Case 42 " + (ICase) new Epee() + " /");
+        plateau.set(42, "/Case 43 " + (ICase) new PotionStandard()+ " /" );
+        plateau.set(43, "/Case 44 " + (ICase) new Sorcier()+ " /");
+        plateau.set(44, "/Case 45 " + (ICase) new Dragon()+ " /");
+        plateau.set(46, "/Case 47 " + (ICase) new Sorcier()+ " /");
+        plateau.set(47, "/Case 48 " + (ICase) new BouleDeFeu() + " /");
+        plateau.set(48, "/Case 49 " + (ICase) new BouleDeFeu() + " /");
+
+        plateau.set(51, "/Case 52 " + (ICase) new Dragon()+ " /");
+        plateau.set(52, "/Case 53 " + (ICase) new Epee() + " /");
+        plateau.set(55, "/Case 56 " + (ICase) new Dragon()+ " /");
+        plateau.set(61, "/Case 62 " + (ICase) new Dragon()+ " /");
+
         plateau.set(63, "*/ case 64 finale /*");
 
     }
@@ -122,5 +187,15 @@ public class Game implements ICase, emptyCase {
 //            public void gameStatut () { //envoie un message selon si on joue, quitte, meurt...
 
 //            }
+            //Jouer = lancer dés, résultat obtenu -1 = index du tableau avec laquelle interagir.
+    //Fonction lancer dés retourne donc l'index du tableau qui nous intéresse
 
+            //Interaction = on récupère le retour du lancer de dés (on lancer le lancer de dés) et on...
+   // ..........  ....... .............................. ...........................
+    //.............................................................................
+        public int casePlateau_DieResult (ArrayList plateau) {
+            this.personnagePosition = this.personnagePosition + getDie() -1;
+            return this.personnagePosition;
+
+        }
 }

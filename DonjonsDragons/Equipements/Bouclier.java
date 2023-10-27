@@ -6,7 +6,7 @@ public class Bouclier extends EquipementDefensif implements ICase {
     private int force;
     public Bouclier() {
         this.force = 10;
-        toString();
+
 
     }
 

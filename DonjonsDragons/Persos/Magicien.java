@@ -6,10 +6,10 @@ public class Magicien extends Personnage implements ICase {
     private int magicienLifeLevel;
     private int magicienForce;
 
-    public Magicien() {
-//        this.changeName();
-        this.magicienLifeLevel = 10000;
-        this.magicienForce = 2500;
+    public Magicien(String name) {
+     setPersonnageName(name);
+        this.magicienLifeLevel = 10;
+//        this.magicienForce = 2500;
     }
 
     public int getMagicienLifeLevel() {

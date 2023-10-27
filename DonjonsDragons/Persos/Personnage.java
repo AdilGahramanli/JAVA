@@ -3,7 +3,7 @@ package DonjonsDragons.Persos;
 import DonjonsDragons.Game.ICase;
 
 public abstract class Personnage implements ICase {
-    private String personnageName;
+    private String personnageName = "bibi";
     private int personnageForce;
     private int personnageLife;
     private String personnageArme;

@@ -1,8 +1,9 @@
 package DonjonsDragons.Equipements;
 
-public abstract class Equipements {
+import DonjonsDragons.Game.ICase;
 
-    public String toString() {
-        return null;
-    }
+public abstract class Equipements implements ICase {
+
+    public abstract String toString();
+
 }

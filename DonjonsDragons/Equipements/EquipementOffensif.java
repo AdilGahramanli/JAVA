@@ -26,7 +26,7 @@ public abstract class EquipementOffensif extends Equipements implements ICase {
     }
 
     @Override
-    public String toString() {
-        return super.toString();
-    }
+    public abstract String toString();
+
+
 }
