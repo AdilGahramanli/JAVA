@@ -26,6 +26,10 @@ public class Magicien extends Personnage implements ICase {
         return "Personnage :" + getPersonnageName() + ", Niveau de vie : " + getMagicienLifeLevel()
                 + ", Force : " + getMagicienForce();
     }
+    @Override
+    public int interact() {
+        return getMagicienLifeLevel();
+    }
 //    public void changeName(String menuName) {
 //         setPersonnageName(menuName);
 //    }

@@ -15,7 +15,14 @@ public class Bouclier extends EquipementDefensif implements ICase {
         return "Force Bouclier :" +getForceBouclier();
     }
 
+    @Override
+    public int interact () {
+        return getForceBouclier();
+    }
+
     public int getForceBouclier() {
         return force;
     }
+
+
 }

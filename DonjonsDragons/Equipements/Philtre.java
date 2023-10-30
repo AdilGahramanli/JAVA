@@ -14,6 +14,10 @@ public class Philtre extends EquipementDefensif implements ICase {
 
     @Override
     public String toString() {
-        return "Philtre - Force = " + getPhiltreForce();
+        return "Philtre | Force = " + getPhiltreForce();
+    }
+    @Override
+    public int interact () {
+        return getPhiltreForce();
     }
 }

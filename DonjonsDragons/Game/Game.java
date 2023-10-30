@@ -18,14 +18,19 @@ import java.util.Scanner;
     ArrayList<ICase> plateau = new ArrayList<ICase>();//le plateau de type ICase
     emptyCase emptyCase;
 
+
     /* ******************* */
     public Game() throws PersonnageHorsPlateauException {
+
+
+
         plateauCreate(plateau);
         personnageTypo(plateau);
         System.out.println(plateau);
         for(int i=0; i< plateau.size(); i++) {
             System.out.println(plateau.get(i));
         }
+
 
 //        System.out.println(plateau.get(0).getClass());
 
@@ -38,9 +43,21 @@ import java.util.Scanner;
         try {
             while (getPersonnagePosition() < 64) {
                 this.personnageMove();
+                System.out.println(findActualCase(plateau, getPersonnagePosition()));
+                Object objet = findActualCase(plateau, getPersonnagePosition());
+
+
+
+                if(objet.getClass() == Massue.class || objet.getClass() == Eclair.class || objet.getClass() == Goblin.class) {
+                    System.out.println("cet objet est de type éclair, massue ou goblin");}
+                    else {
+                        System.out.println("ça marche pas (surtout sans chaussures)"); }
+
+                System.out.println("personnage Position est " + getPersonnagePosition());
             }
         } catch (PersonnageHorsPlateauException e) {
             e.printStackTrace();
+
             personnagePosition = 64;
             System.out.println("vous avez dépassé la case " + getPersonnagePosition());
         } finally {
@@ -117,10 +134,10 @@ import java.util.Scanner;
     public void plateauCreate(ArrayList plateau) {
 
         for (int i = 0; i < 64; i++) {
-            plateau.add(i, "/Case " + (i + 1) + " " + (emptyCase) + " /");
+            plateau.add(i, "/Case " + (i + 1) + " " + (ICase) new EmptyCasePlateau() + " /");
 //            plateau.set(i, "/ case " + i + "/");
         }
-
+//        plateau.set(-1, (ICase) new Eclair());
         plateau.set(0, "/Case 1 " + (ICase) new Eclair()+ " /" );
         plateau.set(1, "/Case 2 " + (ICase) new Massue()+ " /" );
         plateau.set(2, "/Case 3 " + (ICase) new Goblin()+ " /" );
@@ -193,9 +210,26 @@ import java.util.Scanner;
             //Interaction = on récupère le retour du lancer de dés (on lancer le lancer de dés) et on...
    // ..........  ....... .............................. ...........................
     //.............................................................................
-        public int casePlateau_DieResult (ArrayList plateau) {
-            this.personnagePosition = this.personnagePosition + getDie() -1;
-            return this.personnagePosition;
-
+        public int casePlateau_DieResult (int personnagePosition) {
+            personnagePosition = personnagePosition + getDie() -1;
+            return personnagePosition;
         }
+
+        public Object findActualCase(ArrayList plateau, int index) {
+
+            return plateau.get(index - 1);
+        }
+
+
+    @Override
+    public int interact () {
+        return 1;
+    }
+
+//        public ICase plateauMove (ICase plateau, Personnage personnage, EquipementOffensif item) {
+//            if(personnage.getPersonnageLife() == item.getAttackLevel()) {
+//                plateau.interact(personnageForce, itemForce);
+//            }
+
+
 }

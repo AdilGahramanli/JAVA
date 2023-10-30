@@ -15,6 +15,11 @@ public class Eclair extends EquipementOffensif implements ICase {
     }
     @Override
     public String toString() {
-        return "Eclair - Force = " + getEclairForce();
+        return "Eclair | Force = " + getEclairForce();
+    }
+
+    @Override
+    public int interact () {
+        return getEclairForce();
     }
 }

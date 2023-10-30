@@ -3,6 +3,7 @@ package DonjonsDragons;
 import DonjonsDragons.Game.Game;
 import DonjonsDragons.Game.ICase;
 import DonjonsDragons.Game.Menu;
+import DonjonsDragons.Game.Plateau;
 import DonjonsDragons.Persos.PersonnageHorsPlateauException;
 
 public class Main implements ICase {
@@ -20,8 +21,16 @@ public class Main implements ICase {
 
 
 
+    }
 
+    @Override
+    public String toString() {
+        return "MAIN";
+    }
 
+    @Override
+    public int interact () {
+        return 1;
     }
 
 }

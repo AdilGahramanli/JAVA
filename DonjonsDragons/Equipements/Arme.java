@@ -15,7 +15,12 @@ public class Arme extends EquipementOffensif implements ICase {
     }
     @Override
     public String toString() {
-        return "Arme - Force = " + getArmeForce();
+        return "Arme | Force = " + getArmeForce();
+    }
+
+    @Override
+    public int interact () {
+        return getArmeForce();
     }
 //    @Override
 //    public void interact() {

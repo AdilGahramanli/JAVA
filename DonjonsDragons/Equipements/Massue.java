@@ -7,6 +7,7 @@ public class Massue extends EquipementOffensif implements ICase {
 
     public Massue () {
         this.massueForce=7;
+        this.interact();
     }
 
     public int getMassueForce () {
@@ -14,6 +15,11 @@ public class Massue extends EquipementOffensif implements ICase {
     }
     @Override
     public String toString() {
-        return "Massue - Force = " + getMassueForce();
+        return "Massue | Force = " + getMassueForce();
+    }
+
+    @Override
+    public int interact () {
+        return getMassueForce();
     }
 }

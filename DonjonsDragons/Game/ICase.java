@@ -4,5 +4,6 @@ public interface ICase {
      String toString();
 //     void interact();
 
+     int interact();
 
 }

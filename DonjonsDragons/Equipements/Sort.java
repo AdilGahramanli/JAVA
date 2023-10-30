@@ -16,6 +16,12 @@ public class Sort extends EquipementOffensif implements ICase {
 
     @Override
     public String toString() {
-        return "Sort - Force = " + getSortForce();
+        return "Sort | Force = " + getSortForce();
+    }
+
+    @Override
+    public int interact () {
+
+        return getSortForce();
     }
 }

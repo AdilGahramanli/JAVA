@@ -30,8 +30,17 @@ public abstract class Personnage implements ICase {
 
 
 
+
+    @Override
     public abstract String toString();
+    @Override
+    public int interact () {
+        return 1;
+    }
+
 }
+
+
 
 
 //magicien a 3 à 6, guerier de 5 à 10;

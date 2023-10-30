@@ -31,4 +31,9 @@ public class Guerrier extends Personnage {
         return "Personnage :" + getPersonnageName() + ", Niveau de vie : " + getGuerrierLifeLevel() +
                 ", Force : " + getGuerrierForce();
     }
+
+    @Override
+    public int interact () {
+        return getGuerrierForce();
+    }
 }

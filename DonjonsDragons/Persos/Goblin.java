@@ -14,6 +14,10 @@ public class Goblin extends Ennemis implements ICase {
     }
     @Override
     public String toString() {
-        return "Goblin - Force = " + getGoblinForce();
+        return "Goblin | Force = " + getGoblinForce();
+    }
+    @Override
+    public int interact () {
+        return getGoblinForce();
     }
 }
