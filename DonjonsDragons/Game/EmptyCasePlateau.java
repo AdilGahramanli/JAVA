@@ -1,5 +1,7 @@
 package DonjonsDragons.Game;
 
+import DonjonsDragons.Persos.Personnage;
+
 public class EmptyCasePlateau implements ICase{
     public EmptyCasePlateau() {
         this.toString();
@@ -11,7 +13,7 @@ public class EmptyCasePlateau implements ICase{
     }
 
     @Override
-    public int interact () {
+    public int interact (Personnage personnage) {
 
         return 1;
     }

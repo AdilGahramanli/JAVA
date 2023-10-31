@@ -7,7 +7,7 @@ public abstract class Ennemis implements ICase {
     public abstract String toString();
 
 
-    public abstract int interact();
+    public abstract int interact(Personnage personnage);
 
 
 }

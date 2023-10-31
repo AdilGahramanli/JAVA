@@ -1,6 +1,7 @@
 package DonjonsDragons.Equipements;
 
 import DonjonsDragons.Game.ICase;
+import DonjonsDragons.Persos.Personnage;
 
 public class PotionStandard extends Potion implements ICase {
 
@@ -19,7 +20,7 @@ public class PotionStandard extends Potion implements ICase {
         return "Potion | Force = " + getPotionForce();
     }
     @Override
-    public int interact () {
+    public int interact (Personnage personnage) {
         return getPotionForce();
     }
 }

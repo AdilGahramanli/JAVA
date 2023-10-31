@@ -1,6 +1,7 @@
 package DonjonsDragons.Equipements;
 
 import DonjonsDragons.Game.ICase;
+import DonjonsDragons.Persos.Personnage;
 
 public class Bouclier extends EquipementDefensif implements ICase {
     private int force;
@@ -16,7 +17,7 @@ public class Bouclier extends EquipementDefensif implements ICase {
     }
 
     @Override
-    public int interact () {
+    public int interact (Personnage personnage) {
         return getForceBouclier();
     }
 

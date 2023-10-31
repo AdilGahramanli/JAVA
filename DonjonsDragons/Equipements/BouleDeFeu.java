@@ -1,6 +1,7 @@
 package DonjonsDragons.Equipements;
 
 import DonjonsDragons.Game.ICase;
+import DonjonsDragons.Persos.Personnage;
 
 public class BouleDeFeu extends EquipementOffensif implements ICase {
     private int bouleDeFeuForce;
@@ -17,7 +18,7 @@ public class BouleDeFeu extends EquipementOffensif implements ICase {
         return "Boule de Feu | Force = " + getBouleDeFeuForce();
     }
     @Override
-    public int interact () {
+    public int interact (Personnage personnage) {
         return getBouleDeFeuForce();
     }
 }

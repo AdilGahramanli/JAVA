@@ -7,13 +7,17 @@ public class Magicien extends Personnage implements ICase {
     private int magicienForce;
 
     public Magicien(String name) {
-     setPersonnageName(name);
+        setPersonnageName(name);
         this.magicienLifeLevel = 10;
 //        this.magicienForce = 2500;
     }
 
     public int getMagicienLifeLevel() {
         return magicienLifeLevel;
+    }
+
+    public void setMagicienLifeLevel (int ennemyForce) {
+        magicienLifeLevel = magicienLifeLevel - ennemyForce;
     }
 
     public int getMagicienForce() {
@@ -26,8 +30,9 @@ public class Magicien extends Personnage implements ICase {
         return "Personnage :" + getPersonnageName() + ", Niveau de vie : " + getMagicienLifeLevel()
                 + ", Force : " + getMagicienForce();
     }
+
     @Override
-    public int interact() {
+    public int interact(Personnage personnage) {
         return getMagicienLifeLevel();
     }
 //    public void changeName(String menuName) {

@@ -18,7 +18,7 @@ public class Dragon extends Ennemis implements ICase {
         return "Dragon | Force " + getDragonForce();
     }
 
-    @Override public int interact() {
+    @Override public int interact(Personnage personnage) {
         return getDragonForce();
     }
 }

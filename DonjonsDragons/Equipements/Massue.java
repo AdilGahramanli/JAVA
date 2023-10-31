@@ -1,13 +1,13 @@
 package DonjonsDragons.Equipements;
 
 import DonjonsDragons.Game.ICase;
+import DonjonsDragons.Persos.Personnage;
 
 public class Massue extends EquipementOffensif implements ICase {
     private int massueForce;
 
     public Massue () {
         this.massueForce=7;
-        this.interact();
     }
 
     public int getMassueForce () {
@@ -19,7 +19,7 @@ public class Massue extends EquipementOffensif implements ICase {
     }
 
     @Override
-    public int interact () {
+    public int interact (Personnage personnage) {
         return getMassueForce();
     }
 }

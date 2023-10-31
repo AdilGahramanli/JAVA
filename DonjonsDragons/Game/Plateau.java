@@ -3,6 +3,7 @@ package DonjonsDragons.Game;
 import DonjonsDragons.Equipements.*;
 import DonjonsDragons.Persos.Dragon;
 import DonjonsDragons.Persos.Goblin;
+import DonjonsDragons.Persos.Personnage;
 import DonjonsDragons.Persos.Sorcier;
 
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class Plateau implements ICase{
     }
 
     @Override
-    public int interact() {
+    public int interact(Personnage personnage) {
         return 0;
     }
 }

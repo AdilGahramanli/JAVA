@@ -33,7 +33,7 @@ public class Guerrier extends Personnage {
     }
 
     @Override
-    public int interact () {
+    public int interact (Personnage personnage) {
         return getGuerrierForce();
     }
 }

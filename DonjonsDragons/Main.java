@@ -4,6 +4,7 @@ import DonjonsDragons.Game.Game;
 import DonjonsDragons.Game.ICase;
 import DonjonsDragons.Game.Menu;
 import DonjonsDragons.Game.Plateau;
+import DonjonsDragons.Persos.Personnage;
 import DonjonsDragons.Persos.PersonnageHorsPlateauException;
 
 public class Main implements ICase {
@@ -20,7 +21,6 @@ public class Main implements ICase {
         Game game = new Game();
 
 
-
     }
 
     @Override
@@ -29,7 +29,7 @@ public class Main implements ICase {
     }
 
     @Override
-    public int interact () {
+    public int interact(Personnage personnage) {
         return 1;
     }
 

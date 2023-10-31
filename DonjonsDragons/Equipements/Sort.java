@@ -1,6 +1,7 @@
 package DonjonsDragons.Equipements;
 
 import DonjonsDragons.Game.ICase;
+import DonjonsDragons.Persos.Personnage;
 
 public class Sort extends EquipementOffensif implements ICase {
 
@@ -20,7 +21,7 @@ public class Sort extends EquipementOffensif implements ICase {
     }
 
     @Override
-    public int interact () {
+    public int interact (Personnage personnage) {
 
         return getSortForce();
     }

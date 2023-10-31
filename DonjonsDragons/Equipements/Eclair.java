@@ -1,6 +1,7 @@
 package DonjonsDragons.Equipements;
 
 import DonjonsDragons.Game.ICase;
+import DonjonsDragons.Persos.Personnage;
 
 public class Eclair extends EquipementOffensif implements ICase {
 
@@ -19,7 +20,7 @@ public class Eclair extends EquipementOffensif implements ICase {
     }
 
     @Override
-    public int interact () {
+    public int interact (Personnage personnage) {
         return getEclairForce();
     }
 }

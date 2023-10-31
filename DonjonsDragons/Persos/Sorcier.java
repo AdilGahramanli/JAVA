@@ -3,14 +3,14 @@ package DonjonsDragons.Persos;
 import DonjonsDragons.Game.ICase;
 
 public class Sorcier extends Ennemis implements ICase {
-    private int sorcierForce;
+    private final int sorcierForce;
 
-    public Sorcier () {
+    public Sorcier() {
         this.sorcierForce = 7;
 
     }
 
-    public int getSorcierForce () {
+    public int getSorcierForce() {
         return this.sorcierForce;
     }
 
@@ -22,7 +22,7 @@ public class Sorcier extends Ennemis implements ICase {
 
 
     @Override
-    public int interact () {
+    public int interact(Personnage personnage) {
         return getSorcierForce();
     }
 }
