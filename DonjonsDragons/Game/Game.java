@@ -2,6 +2,8 @@ package DonjonsDragons.Game;
 import java.util.ArrayList;
 import DonjonsDragons.Equipements.*;
 import DonjonsDragons.Persos.*;
+import org.w3c.dom.ls.LSOutput;
+
 import java.lang.Math;
 import java.util.Scanner;
 
@@ -12,57 +14,99 @@ public class Game extends Menu {
      */
     private int die;
     private int personnagePosition;
-    private Scanner scannerGame = new Scanner(System.in);
+    public Scanner scannerGame = new Scanner(System.in);
     ArrayList<ICase> plateau = new ArrayList<ICase>();//le plateau de type ICase
-    Personnage gamerChoice;
+    public Personnage personnageChoisi;
+    private String mOrGChoice;
 
 
     /* /////////////////////////////////Constructeur //////////////////////////////////////////////////////////// */
     public Game() throws PersonnageHorsPlateauException {
+
         this.die = 6;
+
         this.personnagePosition = 0;
-        System.out.println("Choisissez un type avec 'm' ou 'g'");
-        String mOrGChoice = getScanner().nextLine(); //doute 1
-        personnageNewChoice(mOrGChoice, gamerChoice);
-        System.out.println(gamerChoice);
 
+        personnageChoisi = null;
 
+        personnageChoisi = new Guerrier(getPersonnageScannerName());
+        System.out.println(personnageChoisi.getClass());
 
-        personnageChoice(gamerChoice);
-//        System.out.print(gamerChoice);
+        Plateau plateauTEST = new Plateau(plateau);
 
-//        if (gamerChoice instanceof Guerrier) {
-//            System.out.println("le personnage choisi est de type guerrier");
+        plateauTEST.getPlateauObject(plateau);
+
+        plateauTEST.getPlateauGoblin(plateau);
+//        System.out.println(plateauTEST instanceof Goblin);
+//        System.out.println(plateau.get(1).getClass());
+        for (int i = 0; i < plateau.size(); i++) {
+//            if(plateauTEST.getPlateauGoblin(plateau) == true );
+
+        }
 
         plateauCreate(plateau);
-//        personnageTypo(plateau); //place à la première case le personnage de type Magicien ou guerrier (non nécessaire ?)
+        for(int i =0; i<plateau.size(); i++) {
+            System.out.println(plateau.get(i) instanceof Goblin);
+//            System.out.println(getActualCaseObject(i));
 
-//        System.out.println("le joueur a choisi" + gamerChoice);
-
-
-        System.out.println(plateau);
-        for (int i = 0; i < plateau.size(); i++) {
-            System.out.println(plateau.get(i));
         }
-        System.out.println("boucle for pour vérifier la classe d'un objet");
+
+
+
+        System.out.println("Choisissez un type 'm' ou 'g'");
+
+        mOrGChoice = scannerGame.nextLine();
+
+        personnageChoisi = personnageChoisirType(mOrGChoice);
+
+        personnageChoisi.toString();
+
+        System.out.println(personnageChoisi);
+
+
+        plateauCreate(plateau);
+
         for (int i = 0; i < plateau.size(); i++) {
-//            Object objet = findActualCase(plateau, getPersonnagePosition());
 
-
-            if (plateau.get(i) instanceof Massue) {
-                System.out.println("cet objet est de type massue");
-            }
+            System.out.println(plateau.get(i));
+//            System.out.println(plateau.get(i).getClass());
         }
 
 
         try {
-            while (getPersonnagePosition() < 64) {
+            while (getPersonnagePosition() < plateau.size()) {
+
                 this.personnageMove();
+
+//                System.out.println(((ICase)plateau.get(1)).getClass());
+
                 System.out.println(findActualCase(plateau, getPersonnagePosition()));
+
+                Object actualPositionObject = findActualCase(plateau, getPersonnagePosition());
+
+                System.out.println(actualPositionObject.getClass());
+
+                actualPositionObject.toString();
+
+                if(actualPositionObject instanceof Goblin) {
+
+                    ((Goblin) actualPositionObject).interact(personnageChoisi);
+
+                } else if (actualPositionObject instanceof Massue) {
+
+                    ((Massue) actualPositionObject).interact(personnageChoisi);
+
+                }
+
+
                 findActualCase(plateau, getPersonnagePosition()).toString();
+
 //                Object objet = findActualCase(plateau, getPersonnagePosition());
+
                 if (findActualCase(plateau, getPersonnagePosition()) instanceof Goblin) {
+
                     System.out.println("ct obejt est de type Goblin");
+
                 }
 
 //                if ( findActualCase(plateau, getPersonnagePosition()) instanceof Goblin) {
@@ -88,6 +132,7 @@ public class Game extends Menu {
             this.restart();
         }
     }
+
 
 
     public int getDie() {
@@ -223,17 +268,46 @@ public class Game extends Menu {
     }
 
     public Object findActualCase(ArrayList plateau, int index) {
-
-        return plateau.get(index);  //ici faire un -1 pour caler index et incrémentation)
+        Object plateauIndex = null;
+        if(index!=1) {
+            plateauIndex = plateau.get(index-1);
+//            return plateauIndex;
+        }  //ici faire un -1 pour caler index et incrémentation)
 //           }
 //            catch (PersonnageHorsPlateauException e) {
 //                System.out.println(e.getMessage());
 //            }
 //            finally {return plateau.get(index - 1);}
+    return plateauIndex;}
+
+    public ICase getActualCaseObject(int index) {
+        return plateau.get(index);
     }
+
+    
 
 
 //
+//        if (mOrGChoice.equals("m")) {Personnage personnageChoisi = new Magicien(getPersonnageScannerName()) ;}
+//        else {Personnage personnageAChoisir = new Guerrier(getPersonnageScannerName());}
+//        personn
+
+
+//        personnageChoisi.setPersonnageName(getPersonnageScannerName());
+//        personnageChoisi.toString();
+//
+//        System.out.println("Choisissez un type avec 'm' ou 'g'");
+//
+//        mOrGChoice = scannerGame.nextLine(); //doute 1
+//
+//        personnageChoisi = new Magicien(getPersonnageScannerName());
+//
+//        personnageChoisirType(mOrGChoice, personnageChoisi);
+
+
+//        affectationNomAuPersonnageChoisi(personnageChoisi, getPersonnageScannerName());
+
+//        System.out.println(gamerChoice);
 
 
 
@@ -269,12 +343,37 @@ public class Game extends Menu {
         return scannerGame;
     }
 
-    public void personnageNewChoice(String choiceMorG, Personnage personnage) {
-        if (choiceMorG.equals("m")) {
-            personnage = new Magicien(getPersonnageScannerName());
-        } else {
-            personnage = new Guerrier(getPersonnageScannerName());
-        }
+    public Personnage personnageChoisirType(String choiceMorG) {
+
+        if(choiceMorG.equals("m")) {personnageChoisi = new Magicien(getPersonnageScannerName());}
+
+            else { personnageChoisi = new Guerrier(getPersonnageScannerName());}
+    return personnageChoisi;
     }
+
+//    public Personnage PersonnageChoisirType (String choiceMorG, Personnage personnageChoisi) {
+//        if (choiceMorG.equals("m")) { personnageChoisirMagicien
+//    }
+
+//    public Personnage personnageChoisirMagicien(Personnage personnageChoisi) {
+//
+//        return personnageChoisi = new Magicien(getPersonnageScannerName());
+//
+//    }
+//
+//    public Personnage personnageChoisirGuerrier (Personnage personnageChoisi) {
+//
+//        return personnageChoisi = new Guerrier (getPersonnageScannerName());
+//
+//    }
+
+//    public void affectationNomAuPersonnageChoisi (Personnage personnage, String nomChoisi) {
+//        personnage.setPersonnageName(nomChoisi);
+//    }
+
+//    public Personnage getPersonnageChoisi() {
+//        return personnageChoisi;
+//    }
+
 
 }

@@ -4,12 +4,19 @@ import DonjonsDragons.Game.ICase;
 
 public class Magicien extends Personnage implements ICase {
     private int magicienLifeLevel;
+
+    private String magicienName;
     private int magicienForce;
 
     public Magicien(String name) {
+
         setPersonnageName(name);
+
+        this.magicienName = getPersonnageName();
+
         this.magicienLifeLevel = 10;
-//        this.magicienForce = 2500;
+
+        this.magicienForce = 2500;
     }
 
     public int getMagicienLifeLevel() {
@@ -22,6 +29,10 @@ public class Magicien extends Personnage implements ICase {
 
     public int getMagicienForce() {
         return magicienForce;
+    }
+
+    public String getMagicienName () {
+        return getPersonnageName();
     }
 
     @Override

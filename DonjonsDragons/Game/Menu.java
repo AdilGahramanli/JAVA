@@ -35,7 +35,7 @@ public class Menu {
     /**
      * Création du personnage
      */
-
+/** Choix du nom du personnage */
     public String personnageCreation(String name) {
         this.personnageScannerName = name;
         System.out.println("votre personnage s'appellera " + personnageScannerName +
@@ -68,6 +68,9 @@ public class Menu {
     public String getPersonnageScannerName() {
         return personnageScannerName;
     }
+
+
+
 
 
 
