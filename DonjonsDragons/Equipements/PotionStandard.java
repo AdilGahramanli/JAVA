@@ -5,22 +5,20 @@ import DonjonsDragons.Persos.Personnage;
 
 public class PotionStandard extends Potion implements ICase {
 
-    private int potionForce;
 
     public PotionStandard() {
-        this.potionForce = 5;
+
+        super(5);
     }
 
-    public int getPotionForce() {
-        return potionForce;
-    }
 
     @Override
     public String toString() {
-        return "Potion | Force = " + getPotionForce();
+        return "Potion | Force = " + getLifePotion();
     }
     @Override
     public int interact (Personnage personnage) {
-        return getPotionForce();
+
+        return personnage.bonusPersonnageLife(getLifePotion());
     }
 }

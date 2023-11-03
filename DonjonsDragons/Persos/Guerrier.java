@@ -7,39 +7,24 @@ public class Guerrier extends Personnage {
      */
 
 
-    private int guerrierLifeLevel;
-    private int guerrierForce;
-
-    private String guerrierName;
-
     public Guerrier(String name) {
 
+        //on fait appel au constructeur de personnage en redéfinissant les valeurs.
+    super(10, 6);
         setPersonnageName(name);
-        this.guerrierName = getPersonnageName();
-
-        this.guerrierLifeLevel = 10000;
-
-        this.guerrierForce = 2500;
-
     }
 
-    public int getGuerrierLifeLevel() {
-        return guerrierLifeLevel;
-    }
 
-    public int getGuerrierForce() {
-        return guerrierForce;
-    }
 
 
     @Override
     public String toString() {
-        return "Personnage :" + getPersonnageName() + ", Niveau de vie : " + getGuerrierLifeLevel() +
-                ", Force : " + getGuerrierForce();
+        return "Personnage de type Guerrier :" + getPersonnageName() + ", Niveau de vie : " + getPersonnageLife() +
+                ", Force : " + getPersonnageForce();
     }
 
     @Override
-    public int interact (Personnage personnage) {
-        return getGuerrierForce();
+    public int interact ( Personnage  personnage ) {
+        return 1;
     }
 }

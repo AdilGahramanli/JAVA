@@ -6,19 +6,19 @@ import DonjonsDragons.Persos.Personnage;
 public class Philtre extends EquipementDefensif implements ICase {
     private int philtreForce;
     public Philtre () {
-        this.philtreForce = 5;
+
+        super(8);
     }
 
-    public int getPhiltreForce() {
-        return philtreForce;
-    }
+
 
     @Override
     public String toString() {
-        return "Philtre | Force = " + getPhiltreForce();
+        return "Philtre | Force = " + getDefenseLevel();
     }
     @Override
     public int interact (Personnage personnage) {
-        return getPhiltreForce();
+
+        return personnage.bonusPersonnageLife(getDefenseLevel());
     }
 }

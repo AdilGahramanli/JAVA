@@ -13,6 +13,10 @@ public abstract class EquipementOffensif extends Equipements implements ICase {
 //
 //    }
 
+    public EquipementOffensif(int attack_level) {
+        this.attackLevel = attack_level;
+    }
+
     public String getSort() {
         return sort;
     }

@@ -3,14 +3,14 @@ package DonjonsDragons.Persos;
 import DonjonsDragons.Game.ICase;
 
 public abstract class Personnage implements ICase {
-    private String personnageName = "bibi";
+    private String personnageName;
     private int personnageForce;
     private int personnageLife;
-    private String personnageArme;
 
 
-    public Personnage() {
-
+    public Personnage(int force, int life) {
+        this.personnageLife = life;
+        this.personnageForce = force;
     }
 
 
@@ -32,9 +32,22 @@ public abstract class Personnage implements ICase {
         return personnageForce;
     }
 
-    public String getPersonnageArme() {
-        return personnageArme;
+    public int addPersonnageForce(int force) {
+       return personnageForce = personnageForce + force;
     }
+
+    public int bonusPersonnageLife(int life) {
+        return personnageLife = personnageLife + life;
+    }
+
+    public int minusPersonnageLife(int ennemiAttack) {
+        return personnageLife = personnageLife - ennemiAttack;
+    }
+
+    public int minusPersonnageForce(int ennemiDefense) {
+        return personnageForce = personnageForce - ennemiDefense;
+    }
+
 
 
 //    @Override

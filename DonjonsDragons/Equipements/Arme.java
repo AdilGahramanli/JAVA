@@ -2,13 +2,14 @@ package DonjonsDragons.Equipements;
 
 import DonjonsDragons.Game.ICase;
 import DonjonsDragons.Persos.Personnage;
+import org.w3c.dom.ls.LSOutput;
 
 public class Arme extends EquipementOffensif implements ICase {
 
     private int armeForce;
 
     public Arme () {
-        this.armeForce = 3;
+        super(3);
     }
 
     public int getArmeForce () {
@@ -21,7 +22,11 @@ public class Arme extends EquipementOffensif implements ICase {
 
     @Override
     public int interact (Personnage personnage) {
-        return getArmeForce();
+        if(personnage instanceof DonjonsDragons.Persos.Guerrier) {
+            return  personnage.getPersonnageForce() + getAttackLevel();
+        }
+        else { return 0;}
+
     }
 //    @Override
 //    public void interact() {

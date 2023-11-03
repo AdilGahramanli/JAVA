@@ -75,6 +75,11 @@ public class Plateau {
         plateau.set(63, new EmptyCasePlateau());
 
         System.out.println(plateau);
+        for (int i = 0; i < plateau.size(); i++) {
+
+        System.out.println(plateau.get(i).getClass());
+        }
+
         System.out.println("c'était le nouveau plateau !");
 
 

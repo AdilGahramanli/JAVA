@@ -8,7 +8,7 @@ public class Epee extends EquipementOffensif implements ICase {
     private int epeeForce;
 
     public Epee() {
-        this.epeeForce = 4;
+        super(5);
     }
 
     public int getEpeeForce() {
@@ -16,11 +16,11 @@ public class Epee extends EquipementOffensif implements ICase {
     }
     @Override
     public String toString() {
-        return "Epee | Force = " + getEpeeForce();
+        return "Epee | Force = " + getAttackLevel();
     }
 
     @Override
     public int interact (Personnage personnage) {
-        return getEpeeForce();
+        return personnage.addPersonnageForce(this.getAttackLevel());
     }
 }

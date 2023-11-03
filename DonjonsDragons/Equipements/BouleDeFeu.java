@@ -7,7 +7,8 @@ public class BouleDeFeu extends EquipementOffensif implements ICase {
     private int bouleDeFeuForce;
 
     public BouleDeFeu () {
-        this.bouleDeFeuForce = 5;
+
+        super(5);
     }
 
     public int getBouleDeFeuForce () {
@@ -19,6 +20,6 @@ public class BouleDeFeu extends EquipementOffensif implements ICase {
     }
     @Override
     public int interact (Personnage personnage) {
-        return getBouleDeFeuForce();
+         return personnage.addPersonnageForce(this.getAttackLevel());
     }
 }

@@ -7,7 +7,8 @@ public class GrandePotion extends Potion implements ICase {
     private int grandePotionForce;
 
     public GrandePotion() {
-        this.grandePotionForce = 5;
+
+        super(7);
     }
 
     public int getGrandePotionForce() {
@@ -20,6 +21,7 @@ public class GrandePotion extends Potion implements ICase {
 
     @Override
     public int interact (Personnage personnage) {
-        return getGrandePotionForce();
+
+        return personnage.bonusPersonnageLife(getLifePotion());
     }
 }

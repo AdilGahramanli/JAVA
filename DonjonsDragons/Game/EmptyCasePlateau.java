@@ -15,6 +15,6 @@ public class EmptyCasePlateau implements ICase{
     @Override
     public int interact (Personnage personnage) {
 
-        return 1;
+        return personnage.getPersonnageForce();
     }
 }

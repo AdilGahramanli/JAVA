@@ -3,13 +3,17 @@ package DonjonsDragons.Equipements;
 import DonjonsDragons.Game.ICase;
 
 public abstract class Potion implements ICase {
-//    private int forcePotion;
+    private int lifePotion;
 
-    public Potion() {
-
+    public Potion(int lifeForce) {
+        this.lifePotion = lifeForce;
     }
 
-//    public int getforcePotion() {
+    public int getLifePotion() {
+        return lifePotion;
+    }
+
+    //    public int getforcePotion() {
 //        return this.forcePotion;
 //    }
 

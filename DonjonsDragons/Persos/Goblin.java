@@ -1,14 +1,12 @@
 package DonjonsDragons.Persos;
 
 import DonjonsDragons.Game.ICase;
-import DonjonsDragons.Game.TypeResult;
 
-public class Goblin extends Ennemis implements ICase, TypeResult {
+public class Goblin extends Ennemis implements ICase {
     private int goblinForce;
 
     public Goblin() {
-        this.goblinForce = 5;
-//        this.getClass();
+        super (5, 4, 2);
     }
 
     public int getGoblinForce () {
@@ -20,13 +18,9 @@ public class Goblin extends Ennemis implements ICase, TypeResult {
     }
     @Override
     public int interact (Personnage personnage) {
-    //action spécifique au goblin
-        if (personnage instanceof Magicien) {
-            ((Magicien) personnage).setMagicienLifeLevel(getGoblinForce()); }
-    return personnage.getPersonnageLife();}
+        //action spécifique au goblin
+        return personnage.getPersonnageLife() - getEnnemiForce();
 
-    @Override
-    public Class typeResult () {
-        return this.getClass();
     }
+
 }

@@ -8,21 +8,20 @@ public class Sort extends EquipementOffensif implements ICase {
     private int sortForce;
 
     public Sort() {
-        this.sortForce = 5;
+
+        super(8);
     }
 
-    public int getSortForce() {
-        return sortForce;
-    }
+
 
     @Override
     public String toString() {
-        return "Sort | Force = " + getSortForce();
+        return "Sort | Force = " + getAttackLevel();
     }
 
     @Override
     public int interact (Personnage personnage) {
 
-        return getSortForce();
+        return personnage.addPersonnageForce(this.getAttackLevel());
     }
 }

@@ -8,7 +8,8 @@ public class Eclair extends EquipementOffensif implements ICase {
     private int eclairForce;
 
     public Eclair () {
-        this.eclairForce = 5;
+
+        super(5);
     }
 
     public int getEclairForce() {
@@ -16,11 +17,11 @@ public class Eclair extends EquipementOffensif implements ICase {
     }
     @Override
     public String toString() {
-        return "Eclair | Force = " + getEclairForce();
+        return "Eclair | Force = " + getAttackLevel();
     }
 
     @Override
     public int interact (Personnage personnage) {
-        return getEclairForce();
+        return personnage.addPersonnageForce(this.getAttackLevel());
     }
 }

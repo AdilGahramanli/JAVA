@@ -5,6 +5,10 @@ public abstract class EquipementDefensif extends Equipements {
     private int defenseLevel;
     private String name;
 
+    public EquipementDefensif(int defense_level) {
+        this.defenseLevel = defense_level;
+    }
+
     public String getBouclier(String bouclier) {
         return bouclier;
     }

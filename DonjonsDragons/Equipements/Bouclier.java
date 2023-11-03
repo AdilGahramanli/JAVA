@@ -6,19 +6,25 @@ import DonjonsDragons.Persos.Personnage;
 public class Bouclier extends EquipementDefensif implements ICase {
     private int force;
     public Bouclier() {
-        this.force = 10;
+        super(5);
 
 
     }
 
     @Override
     public String toString() {
-        return "Force Bouclier :" +getForceBouclier();
+        return "Force Bouclier :" +getDefenseLevel();
     }
 
     @Override
     public int interact (Personnage personnage) {
-        return getForceBouclier();
+        if(personnage instanceof DonjonsDragons.Persos.Guerrier){
+            return personnage.bonusPersonnageLife(getDefenseLevel());
+        }
+        else{
+            return 0;
+        }
+
     }
 
     public int getForceBouclier() {
