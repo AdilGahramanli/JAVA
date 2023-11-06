@@ -21,6 +21,7 @@ public class Massue extends EquipementOffensif implements ICase {
 
     @Override
     public int interact (Personnage personnage) {
-        return personnage.addPersonnageForce(this.getAttackLevel());
+        if (personnage instanceof DonjonsDragons.Persos.Guerrier) {return personnage.addPersonnageForce(this.getAttackLevel());}
+        else { return 0;}
     }
 }

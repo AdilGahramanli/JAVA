@@ -21,6 +21,8 @@ public class Epee extends EquipementOffensif implements ICase {
 
     @Override
     public int interact (Personnage personnage) {
+        if (personnage instanceof DonjonsDragons.Persos.Guerrier)
         return personnage.addPersonnageForce(this.getAttackLevel());
+        else {return 0;}
     }
 }

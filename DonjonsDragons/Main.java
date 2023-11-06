@@ -7,6 +7,8 @@ import DonjonsDragons.Game.Plateau;
 import DonjonsDragons.Persos.Personnage;
 import DonjonsDragons.Persos.PersonnageHorsPlateauException;
 
+/** @author author Adil G */
+/** <b>Classe main </b> chargée de lancer le jeu */
 public class Main implements ICase {
     /**
      * structurer correctement le déroulement
@@ -19,6 +21,7 @@ public class Main implements ICase {
 
 //        Menu menu = new Menu();
         Game game = new Game();
+
 
 
     }

@@ -4,6 +4,7 @@ import DonjonsDragons.Game.ICase;
 import DonjonsDragons.Persos.Personnage;
 import org.w3c.dom.ls.LSOutput;
 
+/** Classe Arme enfant d'équipementOffensif @see Equipements.EquipementDefensif */
 public class Arme extends EquipementOffensif implements ICase {
 
     private int armeForce;

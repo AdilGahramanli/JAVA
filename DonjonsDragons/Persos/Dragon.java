@@ -19,5 +19,6 @@ public class Dragon extends Ennemis implements ICase {
     @Override public int interact(Personnage personnage) {
 
         return personnage.getPersonnageLife() - getEnnemiForce();
+
     }
 }

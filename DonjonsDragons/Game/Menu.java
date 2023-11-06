@@ -13,8 +13,8 @@ public class Menu {
     Scanner scanner = new Scanner(System.in);
 
     /**
-     * Le constructeur menu donne le choix de commencer ou pas une partie, et
-     * si la réponse est oui, lance les étapes de création de personnage
+     * Le constructeur menu donne le choix de commencer ou pas une partie.
+     * Si la réponse est oui, lance les étapes de création de personnage
      */
 
     public Menu() {
@@ -43,27 +43,7 @@ public class Menu {
         return personnageScannerName;
     }
 
-    /*Choisir un type de personnage et lancer l création du personnage*/
-//    public void personnageType() {
-//        System.out.println("Veuillez choisir un type. Tapez 'm' pour Magicien ou 'g' pour Guerrier");
-//        String personnageScannerType = scanner.nextLine();
-//
-//        if (personnageScannerType.equals("m")) {
-//
-//            Personnage magicien = new Magicien(getPersonnageScannerName());
-//            magicien.setPersonnageName(personnageScannerName);
-//            System.out.println(magicien.toString());
-//
-//        } else if (personnageScannerType.equals("g")) {
-//
-//            Personnage guerrier = new Guerrier(getPersonnageScannerName());
-//            guerrier.setPersonnageName(getPersonnageScannerName());
-//            System.out.println(guerrier.toString());
-//
-//        } else {
-//            personnageType();
-//        }
-//    }
+
 
     public String getPersonnageScannerName() {
         return personnageScannerName;

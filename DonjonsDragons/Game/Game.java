@@ -7,11 +7,14 @@ import org.w3c.dom.ls.LSOutput;
 import java.lang.Math;
 import java.util.Scanner;
 
-/* ********************************************************************* */
+/** La classe game est la plus dense, la logique du jeu y est concentrée */
 public class Game extends Menu {
     /**
+     *
      * contiendra la logique interne du jeu (joueurs, avancement)
      */
+
+
     private int die;
     private int personnagePosition;
     public Scanner scannerGame = new Scanner(System.in);
@@ -45,43 +48,33 @@ public class Game extends Menu {
         System.out.println(personnageChoisi);
 
 
-        /** Jeu, déplacement personnage*/
-//        try {
-            while (getPersonnagePosition() < 64) {
+        /** Jeu, déplacement personnage*////////////////////////////////////////////////////////////////
 
-//
-                lancer_et_avancer(getDie());
+            while (getPersonnagePosition() < 64)  {
 
+                try {
 
-                System.out.println(personnagePosition);
+                    lancer_et_avancer(getDie());
+                    System.out.println(personnagePosition);
+                    throw new PersonnageHorsPlateauException();
+
+                }
+                catch(PersonnageHorsPlateauException exception ) {
+
+                exception.exceptionGestion(personnagePosition);
+                }
 
                 plateauTEST.interact(personnageChoisi, personnagePosition);
 
 
-
-//                plateauTEST.interact(personnageChoisi, getPersonnagePosition());
-
-                System.out.println("Niveau de vie : " + personnageChoisi.getPersonnageLife() + " Niveau de force : " + personnageChoisi.getPersonnageForce());
+                System.out.println("Niveau de vie : " + personnageChoisi.getPersonnageLife()
+                        + " Niveau de force : " + personnageChoisi.getPersonnageForce());
 
 //
                 System.out.println("personnage Position est " + getPersonnagePosition());
             }
         }
-//        catch (PersonnageHorsPlateauException e) {
-//            personnagePosition = 64;
-//            System.out.println("vous avez gagné");
-//        }
-//    }
-
-
-
-//        public void setPersonnagePosition(int lancerDés) {
-//            try {personnagePosition = personnagePosition + lancerDés;}
-//            catch(PersonnageHorsPlateauException e) {
-//                personnagePosition = 64;
-//                System.out.println(personnagePosition);
-//            }
-//        }
+//
 
     public int getDie() {
         return (int) (Math.random() * die + 1);
@@ -100,6 +93,7 @@ public class Game extends Menu {
         } else if (this.personnagePosition == 64) {
 
             System.out.println("Vous avez gagné la partie.");
+            return this.personnagePosition;
 
         } else {
 
@@ -107,7 +101,6 @@ public class Game extends Menu {
 
         } /*si >64 alors on traite l'exception*/
 
-        return personnagePosition;
     }
 
 
@@ -129,9 +122,19 @@ public class Game extends Menu {
         }
 
     }
+    public Scanner getScanner() {
+        return scannerGame;
+    }
 
-    public void lancer_et_avancer (int lancerDés){
-        personnagePosition = personnagePosition + lancerDés;
+    public Personnage personnageChoisirType(String choiceMorG) {
+
+        if(choiceMorG.equals("m")) {personnageChoisi = new Magicien(getPersonnageScannerName());}
+
+        else { personnageChoisi = new Guerrier(getPersonnageScannerName());}
+        return personnageChoisi; /** @return Le personnage choisi selon le type indiqué par le joueur */
+    }
+    public void lancer_et_avancer (int lancerDes){
+        personnagePosition = personnagePosition + lancerDes;
 
     }
 
@@ -139,22 +142,7 @@ public class Game extends Menu {
         return this.personnagePosition;
     }
 
-    /**
-     * Méthode pour rejouer
-     */
-//    public void restart() throws PersonnageHorsPlateauException {
-//        System.out.println("Voulez-vous rejouer une partie (o/n)?");
-//        String restartChoice = scannerGame.nextLine();
-//        if (restartChoice.equals("o")) {
-//            personnagePosition = 0;
-//            while (getPersonnagePosition() < 64) {
-//                this.personnageMove(plateau);
-//            }
-//        } else {
-//            System.out.println("Vous avez choisi de ne plus jouer.");
-//        }
 
-//    }
 
 
     public Object findActualCase(ArrayList plateau, int index) {
@@ -179,19 +167,21 @@ public class Game extends Menu {
 
 
 
-//
-    public Scanner getScanner() {
-        return scannerGame;
-    }
+    /**
+     * Méthode pour rejouer
+     */
+//    public void restart() throws PersonnageHorsPlateauException {
+//        System.out.println("Voulez-vous rejouer une partie (o/n)?");
+//        String restartChoice = scannerGame.nextLine();
+//        if (restartChoice.equals("o")) {
+//            personnagePosition = 0;
+//            while (getPersonnagePosition() < 64) {
+//                this.personnageMove(plateau);
+//            }
+//        } else {
+//            System.out.println("Vous avez choisi de ne plus jouer.");
+//        }
 
-    public Personnage personnageChoisirType(String choiceMorG) {
-
-        if(choiceMorG.equals("m")) {personnageChoisi = new Magicien(getPersonnageScannerName());}
-
-            else { personnageChoisi = new Guerrier(getPersonnageScannerName());}
-    return personnageChoisi;
-    }
-
-
+//    }
 
 }
