@@ -7,15 +7,11 @@ import org.w3c.dom.ls.LSOutput;
 /** Classe Arme enfant d'équipementOffensif @see Equipements.EquipementDefensif */
 public class Arme extends EquipementOffensif implements ICase {
 
-    private int armeForce;
 
     public Arme () {
         super(3);
     }
 
-    public int getArmeForce () {
-        return armeForce;
-    }
     @Override
     public String toString() {
         return "Arme | Force = " + getArmeForce();

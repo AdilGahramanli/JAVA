@@ -10,14 +10,9 @@ public abstract class Potion implements ICase {
     }
 
     public int getLifePotion() {
+
         return lifePotion;
     }
 
-    //    public int getforcePotion() {
-//        return this.forcePotion;
-//    }
 
-//    public String toString() {
-//        return "Force potion : " + getforcePotion();
-//    }
 }

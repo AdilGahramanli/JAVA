@@ -4,10 +4,9 @@ import DonjonsDragons.Game.ICase;
 import DonjonsDragons.Persos.Personnage;
 
 public class Bouclier extends EquipementDefensif implements ICase {
-    private int force;
+
     public Bouclier() {
         super(5);
-
 
     }
 
@@ -27,9 +26,6 @@ public class Bouclier extends EquipementDefensif implements ICase {
 
     }
 
-    public int getForceBouclier() {
-        return force;
-    }
 
 
 }

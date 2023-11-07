@@ -5,7 +5,6 @@ import DonjonsDragons.Persos.Personnage;
 
 public class Sort extends EquipementOffensif implements ICase {
 
-    private int sortForce;
 
     public Sort() {
 
