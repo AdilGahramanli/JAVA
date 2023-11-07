@@ -53,10 +53,10 @@ public abstract class Personnage implements ICase {
 //    @Override
 //    public abstract String toString();
 
-    @Override
-    public int interact(Personnage personnage) {
-        return 1;
-    }
+//    @Override
+//    public int interact(Personnage personnage) {
+//        return 1;
+//    }
 
 }
 

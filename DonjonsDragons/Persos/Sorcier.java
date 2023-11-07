@@ -6,7 +6,7 @@ public class Sorcier extends Ennemis implements ICase {
 
 
     public Sorcier() {
-        super(4, 3, 5);
+        super(4, 7, 5);
 
     }
 
@@ -21,6 +21,6 @@ public class Sorcier extends Ennemis implements ICase {
     @Override
     public int interact(Personnage personnage) {
 
-        return personnage.getPersonnageLife() - getEnnemiForce();
+        return personnage.minusPersonnageLife(this.getEnnemiForce());
     }
 }

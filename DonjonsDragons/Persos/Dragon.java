@@ -3,7 +3,6 @@ package DonjonsDragons.Persos;
 import DonjonsDragons.Game.ICase;
 
 public class Dragon extends Ennemis implements ICase {
-    private int dragonForce;
 
     public Dragon () {
         super(10, 8, 7);
@@ -13,12 +12,12 @@ public class Dragon extends Ennemis implements ICase {
 
     @Override
     public String toString() {
-        return "Dragon | Force " + getEnnemiForce();
+        return "Dragon | Force " + this.getEnnemiForce();
     }
 
     @Override public int interact(Personnage personnage) {
 
-        return personnage.getPersonnageLife() - getEnnemiForce();
+        return personnage.minusPersonnageLife(this.getEnnemiForce());
 
     }
 }

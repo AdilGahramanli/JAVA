@@ -22,6 +22,8 @@ public class Game extends Menu {
     public Personnage personnageChoisi;
     private String mOrGChoice;
 
+    public ArrayList <ICase> plateau2;
+
 
     /* /////////////////////////////////Constructeur //////////////////////////////////////////////////////////// */
     public Game() throws PersonnageHorsPlateauException {
@@ -33,9 +35,30 @@ public class Game extends Menu {
         personnageChoisi = null;
 
         personnageChoisi = new Guerrier(getPersonnageScannerName());
-        System.out.println(personnageChoisi.getClass());
+//        System.out.println(personnageChoisi.getClass()); //pour afficher les classes des objets.
 
         Plateau plateauTEST = new Plateau();
+
+        plateau2 = new ArrayList<ICase>();
+
+        plateauTEST.arrayCreation(plateau2);
+
+        System.out.println("Creation du premier tableau (original)" + plateau2);
+        System.out.println("********************");
+
+
+        plateauTEST.modifyPlateauCases(plateau2, plateau2, plateauTEST);
+
+        System.out.println("modification plateau : changement aléatoire des cases " + plateau2);
+
+        plateauTEST.elementCreationArrayList(plateau2, 1, new Dragon());
+
+        System.out.println("Modification : insertion de dragon en index 1" + plateau2);
+
+        System.out.println("on a à l'index 1 un " + plateau2.get(1));
+
+        plateauTEST.searchingElementArrayList(plateau2, "Dragon" );
+        System.out.println("***************************");
 
         System.out.println("Choisissez un type 'm' ou 'g'");
 
@@ -50,30 +73,60 @@ public class Game extends Menu {
 
         /** Jeu, déplacement personnage*////////////////////////////////////////////////////////////////
 
-            while (getPersonnagePosition() < 64)  {
+            while (getPersonnagePosition() < 64 && personnageChoisi.getPersonnageLife() > 0)  {
 
                 try {
-
-                    lancer_et_avancer(getDie());
+                    int dieResult = getDie();
+                    lancer_et_avancer(dieResult);
+                    System.out.println("Résultat lancer de dés = " + dieResult);
+                    plateauTEST.interact(personnageChoisi, personnagePosition, plateau2);
                     System.out.println(personnagePosition);
                     throw new PersonnageHorsPlateauException();
 
                 }
-                catch(PersonnageHorsPlateauException exception ) {
 
-                exception.exceptionGestion(personnagePosition);
+                catch(PersonnageHorsPlateauException exception )  {
+//                setPersonnagePosition(64);
+
+//                    exception.exceptionGestion(personnagePosition, 64);
+                    exceptionGestion(personnagePosition, 64);
+                    System.out.println("Le personnage se trouve à la case " + personnagePosition);
                 }
 
-                plateauTEST.interact(personnageChoisi, personnagePosition);
+
 
 
                 System.out.println("Niveau de vie : " + personnageChoisi.getPersonnageLife()
                         + " Niveau de force : " + personnageChoisi.getPersonnageForce());
 
 //
-                System.out.println("personnage Position est " + getPersonnagePosition());
+//                System.out.println("personnage Position est " + getPersonnagePosition());
             }
+
+             endGame(personnageChoisi);
         }
+
+    public void endGame(Personnage personnageChoisi) throws PersonnageHorsPlateauException{
+        try {if (personnageChoisi.getPersonnageLife() <= 0) {
+
+            System.out.println("Vous êtes mort, ce qui vous empêche malheureusement de gagner la partie");
+
+        }
+        else {
+
+            throw new PersonnageHorsPlateauException();
+
+        } }
+        catch(PersonnageHorsPlateauException exception2) {
+//            exception2.exceptionGestion(personnagePosition, 64);
+            exception2.exceptionMessage();
+            exceptionGestion(personnagePosition, 64);
+            System.out.println("le personnage est revenu à la case " + personnagePosition);
+            System.out.println("Vous avez gagné");
+
+        }
+    }
+
 //
 
     public int getDie() {
@@ -86,13 +139,13 @@ public class Game extends Menu {
 
             this.personnagePosition = this.personnagePosition + getDie();
             System.out.println(this.personnagePosition);
-            plateau.interact(personnageChoisi , getPersonnagePosition());
+            plateau.interact(personnageChoisi , getPersonnagePosition(), plateau2);
 
             return this.personnagePosition;
 
         } else if (this.personnagePosition == 64) {
 
-            System.out.println("Vous avez gagné la partie.");
+//            System.out.println("Vous avez gagné la partie.");
             return this.personnagePosition;
 
         } else {
@@ -110,6 +163,7 @@ public class Game extends Menu {
         if (joueurChoice.equals("m")) {
             gamer = new Magicien(getPersonnageScannerName());
             System.out.println("le joueur se nommera " + gamer.getPersonnageName());
+            System.out.println("***********************");
 
 //            gamerChoice.toString();
         } else if (joueurChoice.equals("g")) {
@@ -142,29 +196,15 @@ public class Game extends Menu {
         return this.personnagePosition;
     }
 
-
-
-
-    public Object findActualCase(ArrayList plateau, int index) {
-        Object plateauIndex = null;
-        if(index!=1) {
-            plateauIndex = plateau.get(index-1);
-//            return plateauIndex;
-        }  //ici faire un -1 pour caler index et incrémentation)
-//           }
-//            catch (PersonnageHorsPlateauException e) {
-//                System.out.println(e.getMessage());
-//            }
-//            finally {return plateau.get(index - 1);}
-    return plateauIndex;}
-
-    public ICase getActualCaseObject(int index) {
-        return plateau.get(index);
+    public void setPersonnagePosition(int personnagePosition) {
+        this.personnagePosition = personnagePosition;
     }
 
+    public void exceptionGestion (int position, int positionVoulue) {
 
+        position = positionVoulue;
 
-
+    }
 
 
     /**

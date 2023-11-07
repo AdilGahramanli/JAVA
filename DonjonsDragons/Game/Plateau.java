@@ -3,6 +3,7 @@ package DonjonsDragons.Game;
 import DonjonsDragons.Equipements.*;
 import DonjonsDragons.Persos.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,23 +15,23 @@ public class Plateau {
 
     public Plateau() {
 
-        plateau = new ArrayList<ICase>();
+//        plateau = new ArrayList<ICase>();
+//
+//        arrayCreation(plateau);
+//
+//        System.out.println("Premier plateau " + plateau);
+//
+////        modifyPlateauCases(plateau, plateau);
+//
+//        System.out.println("Plateau modifié " + plateau);
 
-        arrayCreation(plateau);
 
-        System.out.println("Premier plateau " + plateau);
+//        for (int i = 0; i < plateau.size(); i++) {
+//
+//            System.out.println(plateau.get(i).getClass());
+//        }
 
-        modifyPlateauCases(plateau, plateau);
-
-        System.out.println("Plateau modifié " + plateau);
-
-
-        for (int i = 0; i < plateau.size(); i++) {
-
-            System.out.println(plateau.get(i).getClass());
-        }
-
-        System.out.println("c'était le nouveau plateau !");
+//        System.out.println("c'était le nouveau plateau !");
 
 
     }
@@ -121,19 +122,41 @@ public class Plateau {
         }
     }
 
-    public int interact(Personnage personnage, int index) throws PersonnageHorsPlateauException {
-        if (index >= plateau.size()) throw new PersonnageHorsPlateauException();
+    public int interact(Personnage personnage, int index, ArrayList <ICase> plateau) throws PersonnageHorsPlateauException {
+        if (index >= plateau.size()) {throw new PersonnageHorsPlateauException();}
         return plateau.get(index).interact(personnage);
     }
 
 
-    public ArrayList modifyPlateauCases(ArrayList plateau1, ArrayList plateau2) {
-        /* Tableau 1 et 2 sont égales. On parcourt le tableau 1
-         * et à chaque élément, on va associer une version  a hasard de plateau 2 */
+    public void modifyPlateauCases(ArrayList <ICase> plateau1, ArrayList plateau2, Plateau plateau3) {
 
-        for (int i = 0; i < plateau.size(); i++)
+        for (int i = 0; i < plateau1.size(); i++) {
 
-            plateau2.set((int) (Math.random() * 64), plateau1.get(i));
-        return plateau2;
+//            plateau2.set((int) (Math.random() * 64), plateau1.get(i));
+            plateau3.elementCreationArrayList(plateau2, hazardNumberforCases(64), plateau1.get(i) );
+
+        }
+
+    }
+
+
+
+    public int hazardNumberforCases(int numberRange) {
+        return (int) (Math.random() * numberRange);
+    }
+    public void elementCreationArrayList (ArrayList <ICase> plateau, int index, ICase element) {
+        plateau.set(index, element);
+    }
+    public void removingElementArrayList (ArrayList <ICase> plateau, int index) {
+        plateau.remove( index );
+
+    }
+
+    public void searchingElementArrayList (ArrayList <ICase> plateau, String classSearched) {
+        for (ICase element : plateau) {
+            if (element.toString().contains(classSearched)) {
+                System.out.println(element);
+            }
+        }
     }
 }

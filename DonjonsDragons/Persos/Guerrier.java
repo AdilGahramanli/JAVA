@@ -10,7 +10,7 @@ public class Guerrier extends Personnage {
     public Guerrier(String name) {
 
         //on fait appel au constructeur de personnage en redéfinissant les valeurs.
-    super(10, 6);
+    super(10, 58);
         setPersonnageName(name);
     }
 
