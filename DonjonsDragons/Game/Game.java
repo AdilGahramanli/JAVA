@@ -14,7 +14,7 @@ public class Game extends Menu {
      * contiendra la logique interne du jeu (joueurs, avancement)
      */
 
-
+    /**   */
     private int die;
     private int personnagePosition;
     public Scanner scannerGame = new Scanner(System.in);
@@ -46,7 +46,9 @@ public class Game extends Menu {
         System.out.println("Creation du premier tableau (original)" + plateau2);
         System.out.println("********************");
 
-
+        /** @param des paramètres un peu compliqués mais utiles. PlateauTest est une instance de Plateau pour qu'on puisse faire appel
+         *                     aux méthodes de Plateau mais les autres sont des ArrayLists
+         *                     pour nous faciliter l'appel aux méthodes comme set, get, remove...*/
         plateauTEST.modifyPlateauCases(plateau2, plateau2, plateauTEST);
 
         System.out.println("modification plateau : changement aléatoire des cases " + plateau2);
@@ -57,6 +59,7 @@ public class Game extends Menu {
 
         System.out.println("on a à l'index 1 un " + plateau2.get(1));
 
+        /** @see Plateau a une méthode permettant de rechercher dans un ArrayList */
         plateauTEST.searchingElementArrayList(plateau2, "Dragon" );
         System.out.println("***************************");
 
@@ -81,7 +84,7 @@ public class Game extends Menu {
                     System.out.println("Résultat lancer de dés = " + dieResult);
                     plateauTEST.interact(personnageChoisi, personnagePosition, plateau2);
                     System.out.println(personnagePosition);
-                    throw new PersonnageHorsPlateauException();
+//                    throw new PersonnageHorsPlateauException();
 
                 }
 
@@ -106,25 +109,29 @@ public class Game extends Menu {
              endGame(personnageChoisi);
         }
 
-    public void endGame(Personnage personnageChoisi) throws PersonnageHorsPlateauException{
-        try {if (personnageChoisi.getPersonnageLife() <= 0) {
+    public void endGame(Personnage personnageChoisi){
+//        try {
+            if (personnageChoisi.getPersonnageLife() <= 0) {
 
-            System.out.println("Vous êtes mort, ce qui vous empêche malheureusement de gagner la partie");
+                System.out.println("Vous êtes mort, ce qui vous empêche malheureusement de gagner la partie");
 
-        }
-        else {
+            }
+            else {
 
-            throw new PersonnageHorsPlateauException();
-
-        } }
-        catch(PersonnageHorsPlateauException exception2) {
-//            exception2.exceptionGestion(personnagePosition, 64);
-            exception2.exceptionMessage();
-            exceptionGestion(personnagePosition, 64);
-            System.out.println("le personnage est revenu à la case " + personnagePosition);
-            System.out.println("Vous avez gagné");
-
-        }
+//                throw new PersonnageHorsPlateauException();
+//                exceptionGestion(personnagePosition, 64);
+                System.out.println("le personnage est revenu à la case " + personnagePosition);
+                System.out.println("Vous avez gagné");
+            }
+//        }
+//        catch(PersonnageHorsPlateauException exception2) {
+////            exception2.exceptionGestion(personnagePosition, 64);
+//            exception2.getMessage();
+//            exceptionGestion(personnagePosition, 64);
+//            System.out.println("le personnage est revenu à la case " + personnagePosition);
+//            System.out.println("Vous avez gagné");
+//
+//        }
     }
 
 //
@@ -134,6 +141,7 @@ public class Game extends Menu {
 
     }
 
+    /** @return la position du personnage (int).*/
     public int personnageMove(Plateau plateau) throws PersonnageHorsPlateauException {
         if (this.getPersonnagePosition() < 64) {
 
@@ -180,6 +188,11 @@ public class Game extends Menu {
         return scannerGame;
     }
 
+    /** @param choiceMorG est  un String car on va utiliser le résultat du scanner pour en faire une condition
+     *             qui va décider de quel type de personnage on instancie.
+     * @return le personnage choisi, donc un objet.
+     * @see Personnage nous retournons une valeur de type Personnage car le personnage choisi est une instance
+     * de la clase Personnage*/
     public Personnage personnageChoisirType(String choiceMorG) {
 
         if(choiceMorG.equals("m")) {personnageChoisi = new Magicien(getPersonnageScannerName());}
@@ -187,8 +200,11 @@ public class Game extends Menu {
         else { personnageChoisi = new Guerrier(getPersonnageScannerName());}
         return personnageChoisi; /** @return Le personnage choisi selon le type indiqué par le joueur */
     }
-    public void lancer_et_avancer (int lancerDes){
+    public void lancer_et_avancer (int lancerDes) throws PersonnageHorsPlateauException {
         personnagePosition = personnagePosition + lancerDes;
+        if(personnagePosition>= plateau.size()){
+            throw new PersonnageHorsPlateauException();
+        }
 
     }
 
